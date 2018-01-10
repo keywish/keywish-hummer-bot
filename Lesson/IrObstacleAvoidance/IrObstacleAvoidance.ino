@@ -103,7 +103,7 @@ void loop()
 
    if (dl >= 38 && dr >= 38)
   {
-   int val=180;
+   int val=100;
    analogWrite(M1,0);
    analogWrite(E1, val); //the speed value of motorA is val
    analogWrite(M2,0);

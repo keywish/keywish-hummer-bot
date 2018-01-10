@@ -60,6 +60,7 @@ void loop()
       analogWrite(E1, val); //the speed value of motorA is val
       analogWrite(M2,0);
       analogWrite(E2, val); //the speed value of motorA is val
+      delay(500);
       irrecv.resume(); // Receive the next value
     }
     if(results.value == expedite1)
@@ -69,6 +70,7 @@ void loop()
        analogWrite(E1, val);//the speed value of motorA is val
        analogWrite(M2,0);
        analogWrite(E2, val); //the speed value of motorA is val
+       delay(500);
        irrecv.resume(); // Receive the next value
      }
     if(results.value == expedite2)
@@ -78,6 +80,7 @@ void loop()
        analogWrite(E1, val); //the speed value of motorA is val
        analogWrite(M2,0);
        analogWrite(E2, val); //the speed value of motorA is val
+       delay(500);
        irrecv.resume(); // Receive the next value
      }
 
@@ -126,6 +129,7 @@ void loop()
      analogWrite(M1, val); //the speed value of motorA is val
      analogWrite(E2,0);
      analogWrite(M2, val); //the speed value of motorA is val
+     delay(500);
      irrecv.resume(); // Receive the next value
     }
     Serial.println(results.value, HEX);//The hexadecimal line feed output code
@@ -133,3 +137,4 @@ void loop()
     irrecv.resume(); // Receive the next value
   }
 }
+
