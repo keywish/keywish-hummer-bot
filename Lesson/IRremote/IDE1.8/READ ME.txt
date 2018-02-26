@@ -1,0 +1,1 @@
+If your IDE version is 1.8.0 or later, you do not need to put the library files in the "libraries" file under the IDE installation directory.

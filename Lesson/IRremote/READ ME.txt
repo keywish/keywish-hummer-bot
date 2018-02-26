@@ -1,1 +1,0 @@
-Please unzip the file "IRremote" into the "libraries" file under the IDE installation directory

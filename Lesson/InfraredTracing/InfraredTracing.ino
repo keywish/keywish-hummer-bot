@@ -39,7 +39,16 @@ void loop()
   left1=analogRead(A0);
   centre=analogRead(A1);
   right1=analogRead(A2);
-
+  Serial.print("the left is:");
+  Serial.print(left1);
+  Serial.print("    ");
+  Serial.print("the centre is:");
+  Serial.print(centre);
+  Serial.print("    ");
+  Serial.print("the right is:");
+  Serial.println(right1);
+  
+  
   if((right1 >= 975)&&(centre <= 8)&&(left1 >= 975))//*******forward*******//
   {
    int val=150;

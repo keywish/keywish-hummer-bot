@@ -1,1 +1,0 @@
-If your IDE version is 1.6 or smaller, use the current directory program
