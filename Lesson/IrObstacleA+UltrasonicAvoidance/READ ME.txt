@@ -1,1 +1,0 @@
-If the compilation does not pass, please IDE version to 1.8.0 or later, download address: https://www.arduino.cc/en/Main/Software

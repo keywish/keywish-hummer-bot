@@ -1,28 +1,3 @@
-/***********************************************************************
- *       __                                                          _
- *      / /        _____  __    __  _          _   (_)   ________   | |
- *     / /____   / _____) \ \  / / | |   __   | |  | |  (  ______)  | |_____
- *    / / ___/  | |_____   \ \/ /  | |  /  \  | |  | |  | |______   |  ___  |
- *   / /\ \     | |_____|   \  /   | | / /\ \ | |  | |  (_______ )  | |   | |
- *  / /  \ \__  | |_____    / /    | |/ /  \ \| |  | |   ______| |  | |   | |
- * /_/    \___\  \______)  /_/      \__/    \__/   |_|  (________)  |_|   |_|
- *
- *
- * KeyWay Tech firmware
- *
- * Copyright (C) 2015-2020
- *
- * This program is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, in version 3.
- * learn more you can see <http://www.gnu.org/licenses/>.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- */
-
 #include "PS2X_lib.h"
 int E1 = 5; //PWMA
 int M1 = 9; //DIRA****************************************left
@@ -50,67 +25,67 @@ void loop()
   {
    int val=0;
    digitalWrite(M1,0);
-   analogWrite(E1, val); 
+   analogWrite(E1, val); //the speed value of motorA is 255
    digitalWrite(M2,0);
-   analogWrite(E2, val); 
+   analogWrite(E2, val); //the speed value of motorB is 255
   }
   if(ps2x.Button(PSB_PAD_UP))
   {
     int val=180;
     digitalWrite(M1,0);
-    analogWrite(E1, val); 
+    analogWrite(E1, val); //the speed value of motorA is 255
     digitalWrite(M2,0);
-    analogWrite(E2, val); 
+    analogWrite(E2, val); //the speed value of motorB is 255
    }
   if(ps2x.Button(PSB_R2)||(ps2x.Button(PSB_PAD_RIGHT)))
   {
     int val=200;
     digitalWrite(E1,0);
-    analogWrite(M1, val); 
+    analogWrite(M1, val); //the speed value of motorA is 255
     digitalWrite(M2,0);
-    analogWrite(E2, val); 
+    analogWrite(E2, val); //the speed value of motorB is 255
     delay(200);
     digitalWrite(M1,0);
-    analogWrite(E1, 0); 
+    analogWrite(E1, 0); //the speed value of motorA is 255
     digitalWrite(M2,0);
-    analogWrite(E2, 0); 
+    analogWrite(E2, 0); //the speed value of motorB is 255
   }
   if(ps2x.Button(PSB_L2)||(ps2x.Button(PSB_PAD_LEFT)))
   {
     int val=200;
     digitalWrite(M1,0);
-    analogWrite(E1, val); 
+    analogWrite(E1, val); //the speed value of motorA is 255
     digitalWrite(E2,0);
-    analogWrite(M2, val); 
+    analogWrite(M2, val); //the speed value of motorB is 255
     delay(200);
     digitalWrite(M1,0);
-    analogWrite(E1, 0); 
+    analogWrite(E1, 0); //the speed value of motorA is 255
     digitalWrite(M2,0);
-    analogWrite(E2, 0); 
+    analogWrite(E2, 0); //the speed value of motorB is 255
   }
   if(ps2x.Button(PSB_PAD_DOWN))
   {
     int val=180;
     digitalWrite(E1,0);
-    analogWrite(M1, val); 
+    analogWrite(M1, val); //the speed value of motorA is 255
     digitalWrite(E2,0);
-    analogWrite(M2, val); 
+    analogWrite(M2, val); //the speed value of motorB is 255
     }
    if(ps2x.Button(PSB_L1))// print stick values if either is TRUE
    {
      vb = ps2x.Analog(PSS_LY);
      digitalWrite(M1,0);
-     analogWrite(E1, vb); 
+     analogWrite(E1, vb); //the speed value of motorA is 255
      digitalWrite(M2,0);
-     analogWrite(E2, vb); 
+     analogWrite(E2, vb); //the speed value of motorB is 255
    }
    if(ps2x.Button(PSB_R1))// print stick values if either is TRUE
    {
      KK = ps2x.Analog(PSS_RY);
      analogWrite(M1,KK);
-     analogWrite(E1, 0); 
+     analogWrite(E1, 0); //the speed value of motorA is 255
      analogWrite(M2,KK);
-     analogWrite(E2,0); 
+     analogWrite(E2,0); //the speed value of motorB is 255
    }
   delay(50);
 }

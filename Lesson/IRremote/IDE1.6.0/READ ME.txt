@@ -1,1 +1,0 @@
-If your IDE version is 1.6.0, unzip the file "IRremote.rar" into the "libraries" file under the IDE installation directory.

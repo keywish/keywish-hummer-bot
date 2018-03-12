@@ -1,28 +1,3 @@
-/***********************************************************************
- *       __                                                          _
- *      / /        _____  __    __  _          _   (_)   ________   | |
- *     / /____   / _____) \ \  / / | |   __   | |  | |  (  ______)  | |_____
- *    / / ___/  | |_____   \ \/ /  | |  /  \  | |  | |  | |______   |  ___  |
- *   / /\ \     | |_____|   \  /   | | / /\ \ | |  | |  (_______ )  | |   | |
- *  / /  \ \__  | |_____    / /    | |/ /  \ \| |  | |   ______| |  | |   | |
- * /_/    \___\  \______)  /_/      \__/    \__/   |_|  (________)  |_|   |_|
- *
- *
- * KeyWay Tech firmware
- *
- * Copyright (C) 2015-2020
- *
- * This program is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, in version 3.
- * learn more you can see <http://www.gnu.org/licenses/>.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.
- *
- */
- 
 int E1 = 5; //PWMA
 int M1 = 9; //DIRA****************************************left
 int E2 = 6; //PWMB
@@ -39,17 +14,8 @@ void loop()
   left1=analogRead(A0);
   centre=analogRead(A1);
   right1=analogRead(A2);
-  Serial.print("the left is:");
-  Serial.print(left1);
-  Serial.print("    ");
-  Serial.print("the centre is:");
-  Serial.print(centre);
-  Serial.print("    ");
-  Serial.print("the right is:");
-  Serial.println(right1);
-  
-  
-  if((right1 >= 975)&&(centre <= 8)&&(left1 >= 975))//*******forward*******//
+
+  if((right1 >= 975)&&(centre <= 8)&&(left1 >= 975))//*******直行*******//
   {
    int val=150;
    analogWrite(M1,0);
@@ -58,7 +24,7 @@ void loop()
    analogWrite(E2, val); //the speed value of motorB is val
   }
 
-  else  if((right1 <= 8)&&(centre >= 975)&&(left1 >= 975))//***turn right***//
+  else  if((right1 <= 8)&&(centre >= 975)&&(left1 >= 975))//***左偏,右转***//
   {
     int val=150;
     analogWrite(E1,0);
@@ -67,7 +33,7 @@ void loop()
     analogWrite(E2, val); //the speed value of motorB is val
   }
 
-   else  if((right1 >= 975)&&(centre >= 975)&&(left1 <= 8))//***Turn left***//
+   else  if((right1 >= 975)&&(centre >= 975)&&(left1 <= 8))//***右偏，左转***//
    {
      int val=130;
      analogWrite(M1,0);
@@ -76,7 +42,7 @@ void loop()
      analogWrite(M2, val); //the speed value of motorB is val
     }
 
-   if((right1 <= 8)&&(centre <= 8)&&(left1 <= 8))//*******forward*******//
+   if((right1 <= 8)&&(centre <= 8)&&(left1 <= 8))//*******直行*******//
   {
    int val=130;
    analogWrite(M1,0);
