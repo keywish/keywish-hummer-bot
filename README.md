@@ -1,13 +1,13 @@
-# Please contact us
+# Please Contact Us
 Technical support email: baron@keywish-robot.com; ken@keywish-robot.com 
 Sales email: cici@keywish-robot.com
 
 The latest information download address: https://github.com/keywish/keywish-hummer-bot
 
-# hummer-bot feature
-*`Keywish Hummer-bot smart robot car kit is designed for enthusiasts or beginners to get hands-on experience about Arduino programming, electronics assembling and robotics knowledge`</br>
-*This kit includes HC-SR04 ultrasonic sensor,Infrared barrier, L293D motor drive board, 9g micro servo motor, line tracking module and Bluetooth module, ect.easy for operation and installation</br>
-*Working modes:Infrared/ultrasonic obstacle avoidance, Infrared object tracking, Infrared line following, Ultrasonic with servo obstacle avoidance (Detecting in forward, left and right directions)</br>
+# Hummer-bot Feature
+`*Keywish Hummer-bot smart robot car kit is designed for enthusiasts or beginners to get hands-on experience about Arduino programming, electronics assembling and robotics knowledge`</br>
+`*This kit includes HC-SR04 ultrasonic sensor,Infrared barrier, L293D motor drive board, 9g micro servo motor, line tracking module and Bluetooth module, ect.easy for operation and installation`</br>
+`*Working modes:Infrared/ultrasonic obstacle avoidance, Infrared object tracking, Infrared line following, Ultrasonic with servo obstacle avoidance (Detecting in forward, left and right directions)`</br>
 *APP control: Automatically self-built signal hotspot after power on, the user just needs to connect smart phone with the car's hotspot to control the car through an Android app</br>
 *CD with the best tutorial including the programs and codes which bring you to the robot car world</br>
 # Required Best Buy Links
