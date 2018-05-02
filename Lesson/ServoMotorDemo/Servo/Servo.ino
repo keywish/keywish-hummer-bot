@@ -36,7 +36,7 @@ String temp = "";//Temporary character variables, or use it for the cache
   
 void setup()   
 {  
-  myservo.attach(13);    //Define the steering gear pin to 13
+  myservo.attach(5);    //Define the steering gear pin to 13
   Serial.begin(9600);  //Set the baud rate
 }  
   
