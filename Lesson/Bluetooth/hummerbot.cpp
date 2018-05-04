@@ -126,10 +126,10 @@ void hummerbot::drive(int digree)
     {
         turnLeft();
     }
-//     if (digree >=361 ||digree <= 0 ) 
-//     {
-//        keepStop();
-//    }
+     if (digree >=361 ||digree <= 0 ) 
+     {
+        keepStop();
+    }
     if (digree > 30 && digree < 60) 
     {
         f = (float)(90-digree)/90;
