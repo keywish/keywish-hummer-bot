@@ -1,8 +1,9 @@
 # Please Contact Us
-Technical support email: baron@keywish-robot.com; ken@keywish-robot.com 
+Technical support email: ken@keywish-robot.com
 Sales email: cici@keywish-robot.com
 
 The latest information download address: https://github.com/keywish/keywish-hummer-bot
+![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot)
 
 # Hummer-bot Feature
 `*Keywish Hummer-bot smart robot car kit is designed for enthusiasts or beginners to get hands-on experience about Arduino programming, electronics assembling and robotics knowledge`</br>
