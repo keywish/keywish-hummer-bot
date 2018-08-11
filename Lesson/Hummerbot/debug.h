@@ -2,7 +2,7 @@
 #define _DEUBG_H_
 
 #ifndef  DEBUG_LEVEL
-#define  DEBUG_LEVEL  0
+#define  DEBUG_LEVEL  0xFF
 #endif
 
 void arduino_printf(char *fmt ,...);
