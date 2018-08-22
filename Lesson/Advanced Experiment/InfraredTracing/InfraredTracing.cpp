@@ -51,7 +51,7 @@ InfraredTracing::InfraredTracing(byte pin1, byte pin2, byte pin3)
     ItPins[2] = InfraredTracingPin3;
     value = 0;
     InfraredTracingMode = E_INFRARED_SENSOR_3;
-    //begin();
+    begin();
 }
 
 InfraredTracing::InfraredTracing(byte pin1, byte pin2, byte pin3, byte pin4)
@@ -146,18 +146,15 @@ void InfraredTracing::begin()
  */
 void InfraredTracing::end()
 {
-  EIMSK &= ~(1 << INT0);
+  EIMSK &= ~(1 << 0);
 }
 
 byte InfraredTracing::getValue()
 {
+    dat = 0;
     dat = digitalRead(ItPins[0]);
-    Serial.println(dat);
     dat |= digitalRead(ItPins[1]) << 1;
-    Serial.println(dat);
     dat |= digitalRead(ItPins[2]) << 2;
-    Serial.println(dat);
     return dat;
-    Serial.println("=======");
 }
 #endif

@@ -9,10 +9,12 @@ typedef enum
     E_BLUETOOTH_CONTROL = 0,
     E_INFRARED_REMOTE_CONTROL,
     E_INFRARED_TRACKING_MODE,
-    E_INFRARED_AVOIDANCE,
+    E_INFRARED_AVOIDANCE_MODE,
     E_ULTRASONIC_AVOIDANCE,
     E_PS2_REMOTE_CONTROL,
     E_NRF24L01_CONTROL,
+    E_ULTRASONIC_INFRARED_AVOIDANCE,
+    E_PIANO_MODE,
     E_SMARTCAR_CONTROL_MAX,
 } E_SMARTCAR_CONTROL_MODE;
 
@@ -22,7 +24,10 @@ typedef enum
     E_BACK,
     E_LEFT,
     E_RIGHT,
+    E_RIGHT_ROTATE,
+    E_LEFT_ROTATE,
     E_STOP,
+    E_RUNNING,
     E_SPEED_UP,
     E_SPEED_DOWN,
     E_LOW_POWER,
@@ -42,8 +47,6 @@ public :
     uint8_t BatteryValue;
     uint8_t Temperature;
     byte Speed ;
-    byte Speed_left;
-    byte Speed_right;
     int Degree;
     void GoForward(void);
     void GoBack(void);
@@ -52,8 +55,6 @@ public :
     void KeepStop(void);
     void Drive(int degree);
     void SetSpeed(int8_t s);
-    void SetSpeed_Left(int8_t s);
-    void SetSpeed_Right(int8_t s);
     void SpeedUp(int8_t Duration = 5);
     void SpeedDown(int8_t Duration = 5);
     int  GetSpeed(void);

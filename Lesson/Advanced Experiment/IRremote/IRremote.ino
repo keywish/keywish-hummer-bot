@@ -1,22 +1,16 @@
-
 #include "Hummerbot.h"
+#include "ProtocolParser.h"
+#include "KeyMap.h"
 #include "debug.h"
 
-int E1 = 10;  // PWMB
-int M1 = 6;   // DIRB  ---  right
-int E2 = 9;   // PWMA
-int M2 = 5;   // DIRA  ---  left
+#define INPUT2_PIN 10 // PWMB
+#define INPUT1_PIN 6  // DIRB  ---  right
+#define INPUT4_PIN 5  // PWMA
+#define INPUT3_PIN 9  // DIRA  ---  left
+#define IR_PIN 12
 
-const long Irkey_expedite1 = 0xFF6897;
-const long Irkey_expedite2 = 0xFFB04F;
-const long Irkey_forward = 0xFF18E7;
-const long Irkey_back = 0xFF4AB5;
-const long Irkey_stop = 0xFF38C7;
-const long Irkey_left = 0xFF10EF;
-const long Irkey_right = 0xFF5AA5;
-
-Hummerbot hbot( E1, M1, E2, M2);
-decode_results results;
+ProtocolParser *mProtocol = new ProtocolParser();
+Hummerbot hbot(mProtocol, INPUT2_PIN, INPUT1_PIN, INPUT3_PIN, INPUT4_PIN);
 
 void setup()
 {
@@ -24,53 +18,60 @@ void setup()
     hbot.init();
     hbot.SetControlMode(E_INFRARED_REMOTE_CONTROL);
     hbot.SetIrPin(HB_IR_PIN);
-    hbot.SetSpeed(50);
+    hbot.SetSpeed(0);
 }
 
-void HandleInfaredRemote()
+void HandleInfaredRemote(byte irKeyCode)
 {
-    switch(results.value)
-    {
-        case Irkey_expedite1:
-            hbot.SetSpeed(hbot.Speed + 5);
-            DEBUG_LOG(DEBUG_LEVEL_INFO, "hbot.Speed = %d \n",hbot.Speed);
-            break;
-        case Irkey_expedite2:
-            hbot.SetSpeed(hbot.Speed - 5);
-            DEBUG_LOG(DEBUG_LEVEL_INFO, "hbot.Speed = %d \n",hbot.Speed);
-            break;
-        case Irkey_forward:
-            hbot.GoForward();
-            break;
-        case Irkey_back:
-            hbot.GoBack();
-            break;
-        case Irkey_stop:
-            hbot.KeepStop();
-            break;
-        case Irkey_left:
-            hbot.TurnLeft();
-            break;
-        case Irkey_right:
-            hbot.TurnRight();
-            break;
+    switch ((E_IR_KEYCODE)hbot.mIrRecv->getIrKey(irKeyCode)) {
+        case IR_KEYCODE_STAR:
+          hbot.SpeedUp(10);
+          DEBUG_LOG(DEBUG_LEVEL_INFO, "hbot.Speed = %d \n", hbot.Speed);
+          break;
+        case IR_KEYCODE_POUND:
+          DEBUG_LOG(DEBUG_LEVEL_INFO, " start Degree = %d \n", hbot.Degree);
+          hbot.SpeedDown(10);
+          break;
+        case IR_KEYCODE_UP:
+          hbot.GoForward();
+          break;
+        case IR_KEYCODE_DOWN:
+          hbot.GoBack();
+          break;
+        case IR_KEYCODE_OK:
+          hbot.KeepStop();
+          break;
+        case IR_KEYCODE_LEFT:
+          hbot.TurnLeft();
+          break;
+        case IR_KEYCODE_RIGHT:
+          hbot.TurnRight();
+          break;
         default:
-            break;
+          break;
     }
-    hbot.mIrRecv->resume();
 }
 
 void loop()
-{         
+{
+    mProtocol->RecevData();
     switch(hbot.GetControlMode())
     {
         case E_INFRARED_REMOTE_CONTROL:
-            if  (hbot.mIrRecv->decode(&results)) {
-              DEBUG_LOG(DEBUG_LEVEL_INFO, "results.value = %lx \n",results.value);
-              HandleInfaredRemote();
+            byte irKeyCode;
+            if (irKeyCode = hbot.mIrRecv->getCode()) {
+            DEBUG_LOG(DEBUG_LEVEL_INFO, "irKeyCode = %lx \n", irKeyCode);
+            HandleInfaredRemote(irKeyCode);
+            delay(110);
             }
+            else {
+                if (hbot.GetStatus() != E_STOP ) {
+                    hbot.KeepStop();
+                    }
+                 }
             break;
         default:
             break;
     }
 }
+

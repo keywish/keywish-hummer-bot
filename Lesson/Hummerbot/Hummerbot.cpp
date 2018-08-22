@@ -226,3 +226,43 @@ void Hummerbot::SetInfraredAvoidancePin(uint8_t Left_Pin = HB_INFRARED_AVOIDANCE
 		InfraredAvoidanceInit = true;
 	}
 }
+
+void Hummerbot::SendTracingSignal(){
+    unsigned int TracingSignal = mInfraredTracing->getValue();
+    SendData.start_code = 0xAA;
+    SendData.type = 0x01;
+    SendData.addr = 0x01;
+    SendData.function = E_INFRARED_TRACKING;
+    SendData.data = (byte *)&TracingSignal;
+    SendData.len = 7;
+    SendData.end_code = 0x55;
+    mProtocolPackage->SendPackage(&SendData, 1);
+}
+
+void Hummerbot::SendInfraredData(){
+    unsigned int RightValue = mInfraredAvoidance->GetInfraredAvoidanceRightValue();
+    unsigned int LeftValue = mInfraredAvoidance->GetInfraredAvoidanceLeftValue();
+    byte buffer[2];
+    SendData.start_code = 0xAA;
+    SendData.type = 0x01;
+    SendData.addr = 0x01;
+    SendData.function = E_INFRARED_AVOIDANCE_MODE;
+    buffer[0] = LeftValue & 0xFF;
+    buffer[1] = RightValue & 0xFF;
+    SendData.data = buffer;
+    SendData.len = 8;
+    SendData.end_code = 0x55;
+    mProtocolPackage->SendPackage(&SendData, 2);
+}
+
+void Hummerbot::SendUltrasonicData(){
+    unsigned int UlFrontDistance = mUltrasonic->GetUltrasonicFrontDistance();
+    SendData.start_code = 0xAA;
+    SendData.type = 0x01;
+    SendData.addr = 0x01;
+    SendData.function = E_ULTRASONIC_AVOIDANCE;
+    SendData.data = (byte *)&UlFrontDistance;
+    SendData.len = 7;
+    SendData.end_code = 0x55;
+    mProtocolPackage->SendPackage(&SendData, 1);
+}

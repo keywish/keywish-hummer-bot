@@ -1,21 +1,18 @@
 #include "Hummerbot.h"
-#include "Servo.h"
+#include "ProtocolParser.h"
+#include "KeyMap.h"
 #include "debug.h"
 
-#define HB_TRIGPIN 2
-#define HB_ECHOPIN 3
-#define HB_SERVOPIN 13
+#define INPUT2_PIN 10 // PWMB
+#define INPUT1_PIN 6  // DIRB  ---  right
+#define INPUT4_PIN 5  // PWMA
+#define INPUT3_PIN 9  // DIRA  ---  left
+#define IR_PIN 12
+#define SERVO_PIN 13
+#define ECHO_PIN 3
 
-int E1 = 10;  // PWMB
-int M1 = 6;   // DIRB  ---  right
-int E2 = 9;   // PWMA
-int M2 = 5;   // DIRA  ---  left
-
-float Ul_value_mid;
-float Ul_value_left;
-float Ul_value_right;
-
-Hummerbot hbot( E1, M1, E2, M2);
+ProtocolParser *mProtocol = new ProtocolParser();
+Hummerbot hbot(mProtocol, INPUT2_PIN, INPUT1_PIN, INPUT3_PIN, INPUT4_PIN);
 
 void setup()
 {
@@ -23,73 +20,63 @@ void setup()
     hbot.init();
     hbot.SetControlMode(E_ULTRASONIC_AVOIDANCE);
     hbot.SetUltrasonicPin(HB_TRIGPIN, HB_ECHOPIN, HB_SERVOPIN);
+    hbot.SetSpeed(0);
+    hbot.mUltrasonic->SetServoBaseDegree(90);
+    hbot.mUltrasonic->SetServoDegree(90);
 }
 
-void HandleUltrasonic(){
-    Ul_value_mid = hbot.Ultrasonic_Detection();
-    if ((Ul_value_mid >= 50) && (Ul_value_mid <= 2000) ) {
-        hbot.SetSpeed(90);
-        hbot.GoForward();
+void HandleUltrasonicAvoidance()
+{
+    uint16_t UlFrontDistance,UlLeftDistance,UlRightDistance;
+    UlFrontDistance =  hbot.mUltrasonic->GetUltrasonicFrontDistance();
+    DEBUG_LOG(DEBUG_LEVEL_INFO, "UlFrontDistance =%d \n",UlFrontDistance);
+    if ((UlFrontDistance < UL_LIMIT_MIN))
+    {
+        hbot.SetSpeed(100);
+        hbot.GoBack();
+        delay(250);
     }
-    if ((Ul_value_mid < 50) && (Ul_value_mid > 30) ) {
-        hbot.SetSpeed(50);
-        hbot.GoForward();
-    }
-    else if (Ul_value_mid <= 30) {
-        stop:hbot.KeepStop();
-        delay(300);
-
-        hbot.servo_angle(195);
-        delay(300);
-        Ul_value_left = hbot.Ultrasonic_Detection();
-
-        hbot.servo_angle(0);
-        delay(300);
-        Ul_value_right = hbot.Ultrasonic_Detection();
-
-        hbot.servo_angle(85);
-        if (Ul_value_left >= 20 && Ul_value_left <= 1000 && Ul_value_left > Ul_value_right) {
-            hbot.SetSpeed_Left(100);
-            hbot.SetSpeed_Right(70);
-            hbot.TurnLeft_L_R();
-            delay(900);
+    if (UlFrontDistance < UL_LIMIT_MID)
+    {
+        hbot.KeepStop();
+        delay(100);
+        UlRightDistance = hbot.mUltrasonic->GetUltrasonicRightDistance();
+        UlLeftDistance = hbot.mUltrasonic->GetUltrasonicLeftDistance();
+        if((UlRightDistance > UL_LIMIT_MIN) && (UlRightDistance < UL_LIMIT_MAX))
+        {
+            hbot.SetSpeed(80);
+            hbot.TurnRight();
+            delay(310);
         }
-        else if (Ul_value_left >= 1000) {
-            hbot.SetSpeed_Left(70);
-            hbot.SetSpeed_Right(100);
-            hbot.TurnRight_L_R();
-            delay(900);
+        else if((UlLeftDistance > UL_LIMIT_MIN) && (UlLeftDistance < UL_LIMIT_MAX))
+        {
+            hbot.SetSpeed(80);
+            hbot.TurnLeft();
+            delay(310);
         }
-        else if (Ul_value_right >= 20 && Ul_value_right <= 1000 && Ul_value_right > Ul_value_left) {
-            hbot.SetSpeed_Left(70);
-            hbot.SetSpeed_Right(100);
-            hbot.TurnRight_L_R();
-            delay(900);
+        else if((UlRightDistance < UL_LIMIT_MIN) && (UlLeftDistance < UL_LIMIT_MIN) )
+        {
+            hbot.SetSpeed(80);
+            hbot.Drive(0);
+            delay(510);
         }
-        else if (Ul_value_right >= 1000) {
-            hbot.SetSpeed_Left(100);
-            hbot.SetSpeed_Right(70);
-            hbot.TurnLeft_L_R();
-            delay(900);
-        }
-        else if (Ul_value_right <= 20 && Ul_value_left <= 20) {
-            hbot.SetSpeed(100);
-            hbot.GoBack();
-            delay(300);
-            goto stop;
-        }
-    }
+    } else{
+          hbot.SetSpeed(80);
+          hbot.GoForward();
+      }
 }
 
 void loop()
 {
+    mProtocol->RecevData();
     switch(hbot.GetControlMode())
     {
         case E_ULTRASONIC_AVOIDANCE:
             DEBUG_LOG(DEBUG_LEVEL_INFO, "E_ULTRASONIC_AVOIDANCE \n");
-            HandleUltrasonic();
+            HandleUltrasonicAvoidance();
             break;
         default:
             break;
     }
 }
+

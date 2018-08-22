@@ -20,7 +20,7 @@ SmartCar::~SmartCar()
 
 void SmartCar::SetControlMode(E_SMARTCAR_CONTROL_MODE mode)
 {
-    if (mode < E_SMARTCAR_CONTROL_MAX && mode > 0)
+    if (mode < E_SMARTCAR_CONTROL_MAX && mode >= 0)
     mControlMode = mode;
 }
 
@@ -45,30 +45,6 @@ void SmartCar::SetSpeed(int8_t s)
 int SmartCar::GetSpeed(void)
 {
     return Speed;
-}
-void SmartCar::SetSpeed_Left(int8_t s)
-{
-    // DEBUG_LOG(DEBUG_LEVEL_INFO, "SetSpeed =%d \n", s);
-    if (s > 100) {
-        Speed_left = 100;
-        return;
-    } else if (s < 0) {
-        Speed_left = 0;
-        return;
-    }
-    Speed_left = s;
-}
-void SmartCar::SetSpeed_Right(int8_t s)
-{
-    // DEBUG_LOG(DEBUG_LEVEL_INFO, "SetSpeed =%d \n", s);
-    if (s > 100) {
-        Speed_right = 100;
-        return;
-    } else if (s < 0) {
-        Speed_right = 0;
-        return;
-    }
-    Speed_right = s;
 }
 
 void SmartCar::SpeedUp(int8_t Duration = 5)
