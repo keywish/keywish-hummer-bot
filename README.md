@@ -6,6 +6,8 @@ The latest information download address: https://github.com/keywish/keywish-humm
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot)
 # Hummer-bot 
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot.png)
+# Component List
+![](https://github.com/keywish/keywish-hummer-bot/raw/master/Component List.png)
 # Feature
 `*Keywish Hummer-bot smart robot car kit is designed for enthusiasts or beginners to get hands-on experience about Arduino programming, electronics assembling and robotics knowledge`</br>
 `*This kit includes HC-SR04 ultrasonic sensor,Infrared barrier, L293D motor drive board, 9g micro servo motor, line tracking module and Bluetooth module, ect.easy for operation and installation`</br>
