@@ -3,22 +3,22 @@
 #include "KeyMap.h"
 #include "debug.h"
 
-#define INPUT2_PIN 10 // PWMB  ， 
-#define INPUT1_PIN 6  // DIRB  ---  right
-#define INPUT4_PIN 5  // PWMA
-#define INPUT3_PIN 9  // DIRA  ---  left
+#define INPUT1_PIN 6   // PWMB
+#define INPUT2_PIN 10  // DIRB  ---  right
+#define INPUT3_PIN 5   // DIRA  ---  left
+#define INPUT4_PIN 9   // PWMA
 #define INFRARED_AVOIDANCE_LEFT_PIN A3
 #define INFRARED_AVOIDANCE_RIGHT_PIN A4
 
 ProtocolParser *mProtocol = new ProtocolParser();
-Hummerbot hbot(mProtocol, INPUT2_PIN, INPUT1_PIN, INPUT3_PIN, INPUT4_PIN);
+Hummerbot hbot(mProtocol, INPUT1_PIN, INPUT2_PIN, INPUT3_PIN, INPUT4_PIN);
 
 void setup()
 {
     Serial.begin(9600);
     hbot.init();
     hbot.SetControlMode(E_INFRARED_AVOIDANCE_MODE);
-    hbot.SetInfraredAvoidancePin(HB_INFRARED_AVOIDANCE_LEFT_PIN, HB_INFRARED_AVOIDANCE_RIGHT_PIN);
+    hbot.SetInfraredAvoidancePin(INFRARED_AVOIDANCE_LEFT_PIN, INFRARED_AVOIDANCE_RIGHT_PIN);
     hbot.SetSpeed(0);
 }
 //====================================InfraredAvoidance
