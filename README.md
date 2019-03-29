@@ -1,6 +1,6 @@
 # Please Contact Us
 Technical support email: abbott@keywish-robot.com </br>
-Sales email: cici@keywish-robot.com </br>
+Sales email:cikki@keywish-robot.com</br>
 The latest information download address: https://github.com/keywish/keywish-hummer-bot
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot)
 
