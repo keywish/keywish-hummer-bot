@@ -1,5 +1,5 @@
 # Please Contact Us
-Technical support email: abbott@keywish-robot.com </br>
+Technical support email: support@keywish-robot.com, ken@keywish-robot.com</br>
 Sales email:ken@keywish-robot.com</br>
 The latest information download address: https://github.com/keywish/keywish-hummer-bot
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot)
@@ -22,8 +22,8 @@ Hummer-Bot is a multi-function car, it is based on the Arduino UNO and the L298N
 * PS2 handle control (optional) </br>
 
 # Required Best Buy Links
-[Buy on Amazon](https://www.amazon.com/dp/B078WM15DK) </br>
-[Buy on AliExpress](https://www.aliexpress.com/item/Keywish-Smart-Car-Hummer-Bot-Controlled-By-App-For-Arduino-UNO-R3-Starter-Kit-With-Tutorial/32848379748.html?spm=2114.search0104.3.34.2e254236y5p1lx&ws_ab_test=searchweb0_0,searchweb201602_1_10152_10151_10065_10344_10068_10342_10325_10343_10546_10340_10548_10341_10084_10083_10618_10307_5711211_10313_10059_10534_100031_10103_10627_10626_10624_10623_10622_5722411_10621_10620_10811_5711311,searchweb201603_25,ppcSwitch_5&algo_expid=8cb714ad-b661-4c80-ad0b-0adf5bde678e-5&algo_pvid=8cb714ad-b661-4c80-ad0b-0adf5bde678e&priceBeautifyAB=0"悬停显示")
+[Buy on Amazon](https://www.amazon.com/Keywish-Hummer-Bot-Learning-Bluetooth-Ultrasonic/dp/B07CFX53W4?ref_=ast_sto_dp) </br>
+[Buy on AliExpress](https://es.aliexpress.com/item/32959910793.html?spm=a2g0o.detail.100009.4.38997215Wsk0Tv&gps-id=pcDetailLeftTopSell&scm=1007.13482.95643.0&scm_id=1007.13482.95643.0&scm-url=1007.13482.95643.0&pvid=d81871eb-a70e-4ccd-8bbe-efc48e2c6042&_t=gps-id:pcDetailLeftTopSell,scm-url:1007.13482.95643.0,pvid:d81871eb-a70e-4ccd-8bbe-efc48e2c6042,tpp_buckets:668%230%23131923%2313_668%23808%234093%23864_668%23888%233325%2320_668%232846%238111%23441_668%232717%237566%23871)
 
 # Download Method
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/Image.png)
