@@ -1,8 +1,6 @@
-# Please Contact Us
-Technical support email: abbott@emakefun.com  
-Technical support email: support@keywish-robot.com </br>
-Sales email: ken@keywish-robot.com  </br>
-The latest information download address: https://github.com/keywish/keywish-hummer-bot
+Technical support email: support@keywish-robot.com</br>
+Sales email: ken@keywish-robot.com</br>
+The latest information download address:https://github.com/keywish/keywish-hummer-bot   </br>
 ![](https://github.com/keywish/keywish-hummer-bot/raw/master/hummer-bot)
 
 # Hummer-bot 
